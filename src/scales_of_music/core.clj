@@ -3,24 +3,19 @@
   (:require [clojure.data.json :as json]
             [clojure.string :as str]))
 
-(defn read-file
-  [path]
-  (json/read-str (slurp path)
+(defn modes
+  []
+  (json/read-str (slurp "resources/mode-families.json")
                  :key-fn keyword))
 
 (def notes
   ["A", "A#/Bb" , "B" , "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab"])
 
 (defn rotate [v n]
-  (let [cv (count v), n (mod n cv)]
-    (vec (concat (subvec v n cv) (subvec v 0 n)))))
+  (take (count v) (nthrest (cycle v) (- n 1))))
 
 (def distances
   {:h 1 :w 2 :wh 3})
-
-(defn modes
-  []
-  (read-file  (str "resources/mode-families.json")))
 
 (defn list-families
   []
@@ -86,10 +81,7 @@
   (println "Hello, World!"))
 
 (comment
-  (list-families)
+  (list-families) 4
   (list-modes "Major")
   (get-scale "D" "Major" "Dorian")
-
-  (sequence (comp (filter (comp odd? :id))
-                  (filter (comp #{"Dow1" "Dow2" "Dow3"} :last-name)))
-            data))
+  (list-all-modes))
