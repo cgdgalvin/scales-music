@@ -1,0 +1,319 @@
+[
+	{
+		"name": "Major",
+		"degrees": [
+			"w",
+			"w",
+			"h",
+			"w",
+			"w",
+			"w",
+			"h"
+		],
+		"modes": [
+			{
+				"position": 1,
+				"name": "Ionian",
+				"chord": [
+					"Maj7"
+				]
+			},
+			{
+				"position": 2,
+				"name": "Dorian",
+				"chord": [
+					"Min7"
+				]
+			},
+			{
+				"position": 3,
+				"name": "Phrygian",
+				"chord": [
+					"Min7"
+				]
+			},
+			{
+				"position": 4,
+				"name": "Lydian",
+				"chord": [
+					"Maj7"
+				]
+			},
+			{
+				"position": 5,
+				"name": "Mixolydian",
+				"chord": [
+					"7"
+				]
+			},
+			{
+				"position": 6,
+				"name": "Aeolian",
+				"chord": [
+					"Min7"
+				]
+			},
+			{
+				"position": 7,
+				"name": "Locrian",
+				"chord": [
+					"Min7b5"
+				]
+			}
+		]
+	},
+	{
+		"name": "Melodic Minor",
+		"degrees": [
+			"w",
+			"h",
+			"w",
+			"w",
+			"w",
+			"w",
+			"h"
+		],
+		"modes": [
+			{
+				"position": 1,
+				"name": "Melodic Minor",
+				"chord": [
+					"MinMaj7"
+				]
+			},
+			{
+				"position": 2,
+				"name": "Dorian Flat 2",
+				"chord": [
+					"Min7"
+				]
+			},
+			{
+				"position": 3,
+				"name": "Lydian Aug",
+				"chord": [
+					"Maj7#5"
+				]
+			},
+			{
+				"position": 4,
+				"name": "Lydian Dom",
+				"chord": [
+					"7"
+				]
+			},
+			{
+				"position": 5,
+				"name": "Aeolian Dom",
+				"chord": [
+					"7"
+				]
+			},
+			{
+				"position": 6,
+				"name": "Half Diminished",
+				"chord": [
+					"Min7b5"
+				]
+			},
+			{
+				"position": 7,
+				"name": "Alt",
+				"chord": [
+					"Min7b5",
+					"7alt"
+				]
+			}
+		]
+	},
+	{
+		"name": "Harmonic Minor",
+		"degrees": [
+			"w",
+			"h",
+			"w",
+			"w",
+			"h",
+			"wh",
+			"h"
+		],
+		"modes": [
+			{
+				"position": 1,
+				"name": "Harmonic Minor",
+				"chord": [
+					"MinMaj7"
+				]
+			},
+			{
+				"position": 2,
+				"name": "Locrian Natural 6",
+				"chord": [
+					"Min7b5"
+				]
+			},
+			{
+				"position": 3,
+				"name": "Maj Sharp 5",
+				"chord": [
+					"Maj7#5"
+				]
+			},
+			{
+				"position": 4,
+				"name": "Dorian Sharp 4",
+				"chord": [
+					"7"
+				]
+			},
+			{
+				"position": 5,
+				"name": "Phrygian Dom",
+				"chord": [
+					"7"
+				]
+			},
+			{
+				"position": 6,
+				"name": "Lydian Sharp 2",
+				"chord": [
+					"Min7b5"
+				]
+			},
+			{
+				"position": 7,
+				"name": "Altered Dominant Double Flat 7",
+				"chord": [
+					"Min7b5",
+					"7alt"
+				]
+			}
+		]
+	},
+	{
+		"name": "Harmonic Major",
+		"degrees": [
+			"w",
+			"w",
+			"h",
+			"w",
+			"h",
+			"wh",
+			"h"
+		],
+		"modes": [
+			{
+				"position": 1,
+				"name": "Harmonic Major",
+				"chord": [
+					"Maj7"
+				]
+			},
+			{
+				"position": 2,
+				"name": "Dorian Flat 5",
+				"chord": [
+					"Min7b5"
+				]
+			},
+			{
+				"position": 3,
+				"name": "Phrygian Flat 4",
+				"chord": [
+					"Min7",
+					"7"
+				]
+			},
+			{
+				"position": 4,
+				"name": "Lydian Flat 3",
+				"chord": [
+					"MinMaj7"
+				]
+			},
+			{
+				"position": 5,
+				"name": "Mixolydian Flat 2",
+				"chord": [
+					"7"
+				]
+			},
+			{
+				"position": 6,
+				"name": "Lydian Aug Sharp 2",
+				"chord": [
+					"Maj7#5",
+					"Dim7"
+				]
+			},
+			{
+				"position": 7,
+				"name": "Locrian Double Flat 7",
+				"chord": [
+					"Dim7"
+				]
+			}
+		]
+	},
+	{
+		"name": "Diminished",
+		"degrees": [
+			"w",
+			"h"
+		],
+		"modes": [
+			{
+				"position": 1,
+				"name": "Diminished",
+				"chord": [
+					"Dim7"
+				]
+			},
+			{
+				"position": 2,
+				"name": "Inverted Diminished",
+				"chord": [
+					"7"
+				]
+			}
+		]
+	},
+	{
+		"name": "Whole Tone",
+		"degrees": [
+			"w"
+		],
+		"modes": [
+			{
+				"position": 1,
+				"name": "Diminished",
+				"chord": [
+					"7 b5/#5"
+				]
+			}
+		]
+	},
+	{
+		"name": "Augmented",
+		"degrees": [
+			"wh",
+			"h"
+		],
+		"modes": [
+			{
+				"position": 1,
+				"name": "Augmented",
+				"chord": [
+					"Maj7"
+				]
+			},
+			{
+				"position": 2,
+				"name": "Inverted Augmented",
+				"chord": [
+					"6#5"
+				]
+			}
+		]
+	}
+]
