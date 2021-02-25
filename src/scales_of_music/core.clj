@@ -24,9 +24,8 @@
 
 (defn list-modes
   [family-name]
-  (->> modes
-       (filter #(= family-name (% :name)))
-       first
+  (->> (modes)
+       (some #(when (= family-name (% :name)) %))
        :modes
        (map :name)))
 
@@ -35,12 +34,13 @@
 
 (defn name->family
   [family-name]
-  (first (filter #(= family-name (% :name)) (modes))))
+  (some #(when (= family-name (% :name)) %) (modes)))
 
 (defn mode->family-name
   [mode-name]
-  ;;  (reduce #(when #(some #{mode-name} (list-modes (:name %2))) (reduced %2)) nil (modes))
-  (:name (first (filter #(some #{mode-name} (list-modes (:name %)) ) (modes)))))
+  (:name (some 
+          #(when #(some #{mode-name} (list-modes (:name %))) %) 
+          (modes))))
 
 (defn count-up
   [collection value]
@@ -52,7 +52,7 @@
 
 (defn get-mode 
   [mode family]
-  (first (filter #(= mode (% :name)) (:modes family))))
+  (some #(when (= mode (% :name)) %) (:modes family)))
 
 (defn calc-scale
   [root-note family mode-name]
@@ -81,6 +81,6 @@
   (list-families)
   (list-modes "Major")
   (get-scale "D" "Major" "Dorian")
-  (list-all-modes)
   (get-scale "C" "Lydian Aug Sharp 2")
+  (list-all-modes)
   (midi/play-scale (get-scale "C" "Lydian Aug Sharp 2")))
