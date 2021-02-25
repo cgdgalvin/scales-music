@@ -4,46 +4,42 @@
             [clojure.string :as str]
             [scales-of-music.midi :as midi]))
 
-(defn modes
-  []
+(defn modes []
   (json/read-str (slurp "resources/mode-families.json")
                  :key-fn keyword))
 
 (def notes
   ["A", "A#/Bb" , "B" , "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab"])
 
-(defn rotate [v n]
+(def distances
+  {:h 1 :w 2 :wh 3 :ww 5 :wwh 6 :www 7})
+
+(defn rotate 
+  "Rotate Vector, N times"
+  [v n]
   (into [] (take (count v) (nthrest (cycle v) n))))
 
-(def distances
-  {:h 1 :w 2 :wh 3})
-
-(defn list-families
-  []
-  (->>
-    (modes)
-    (map :name)))
+(defn list-families []
+  (->> (modes) (map :name)))
 
 (defn list-modes
   [family-name]
-  (->>
-    (modes)
-    (filter #(= family-name (% :name)))
-    first
-    :modes 
-   (map :name)))
+  (->> modes
+       (filter #(= family-name (% :name)))
+       first
+       :modes
+       (map :name)))
 
-(defn list-all-modes
-  []
+(defn list-all-modes[]
   (map list-modes (list-families)))
 
-(defn get-family
+(defn name->family
   [family-name]
   (first (filter #(= family-name (% :name)) (modes))))
 
 (defn mode->family-name
-  "create a map of family - modes, then do a search"
   [mode-name]
+  ;;  (reduce #(when #(some #{mode-name} (list-modes (:name %2))) (reduced %2)) nil (modes))
   (:name (first (filter #(some #{mode-name} (list-modes (:name %)) ) (modes)))))
 
 (defn count-up
@@ -70,7 +66,7 @@
   ([root-note mode-name]
    (get-scale root-note (mode->family-name mode-name) mode-name))
   ([root-note family-name mode-name]
-   (let [family (get-family family-name)
+   (let [family (name->family family-name)
          scale (calc-scale root-note family mode-name)]
      (println (str family-name " Family"))
      (println (str root-note " " mode-name " Scale"))
@@ -78,12 +74,11 @@
      scale)))
 
 (defn -main
-  "I don't do a whole lot ... yet."
   [& args]
-  (println "Hello, World!"))
+  (list-all-modes))
 
 (comment
-  (list-families) 4
+  (list-families)
   (list-modes "Major")
   (get-scale "D" "Major" "Dorian")
   (list-all-modes)

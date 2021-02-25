@@ -1,7 +1,7 @@
 (ns scales-of-music.midi)
 (import '(javax.sound.midi MidiSystem Synthesizer))
 
-(defn play-note [synth channel note-map]
+(defn play-note [channel note-map]
   (let [{:keys [note velocity duration]
          :or {note 60
               velocity 127
@@ -15,7 +15,7 @@
   (with-open [synth (doto (MidiSystem/getSynthesizer) .open)]
     (let [channel (aget (.getChannels synth) 0)]
       (doseq [note notes]
-        (play-note synth channel note)))))
+        (play-note channel note)))))
 
 (def note->number
   {"A" 9 "A#/Bb" 10 "B" 11 "C" 0
@@ -32,3 +32,6 @@
   (let [notes (scale->notes scale)]
     (play-notes (concat notes
                         (rest (reverse notes))))))
+
+
+ {:duration 400, :note 60}

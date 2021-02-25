@@ -2,6 +2,8 @@
   
  - add logic to chose them ect
 
+- Need to filter the mode lists better, bring them into edn and apply better filtering
+
 ## Usage
 
    repl only atm
