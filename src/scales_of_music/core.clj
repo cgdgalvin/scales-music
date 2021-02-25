@@ -14,7 +14,7 @@
 (def distances
   {:h 1 :w 2 :wh 3 :ww 5 :wwh 6 :www 7})
 
-(defn rotate 
+(defn rotate
   "Rotate Vector, N times"
   [v n]
   (into [] (take (count v) (nthrest (cycle v) n))))
@@ -29,7 +29,7 @@
        :modes
        (map :name)))
 
-(defn list-all-modes[]
+(defn list-all-modes []
   (map list-modes (list-families)))
 
 (defn name->family
@@ -39,8 +39,7 @@
 (defn mode->family-name
   [mode-name]
   ;;  (reduce #(when #(some #{mode-name} (list-modes (:name %2))) (reduced %2)) nil (modes))
-  ;;    
-  (:name (first (filter #(some #{mode-name} (list-modes (:name %)) ) (modes)))))
+  (:name (first (filter #(some #{mode-name} (list-modes (:name %))) (modes)))))
 
 (defn count-up
   [collection value]
@@ -50,7 +49,7 @@
   [tones]
   (concat [0] (reduce count-up [] tones)))
 
-(defn get-mode 
+(defn get-mode
   [mode family]
   (some #(when (= mode (% :name)) %) (:modes family)))
 
