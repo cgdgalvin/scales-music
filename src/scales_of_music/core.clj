@@ -38,9 +38,9 @@
 
 (defn mode->family-name
   [mode-name]
-  (:name (some 
-          #(when #(some #{mode-name} (list-modes (:name %))) %) 
-          (modes))))
+  ;;  (reduce #(when #(some #{mode-name} (list-modes (:name %2))) (reduced %2)) nil (modes))
+  ;;    
+  (:name (first (filter #(some #{mode-name} (list-modes (:name %)) ) (modes)))))
 
 (defn count-up
   [collection value]
