@@ -1,7 +1,8 @@
 (ns scales-of-music.core
   (:gen-class)
   (:require [clojure.data.json :as json]
-            [clojure.string :as str]))
+            [clojure.string :as str]
+            [scales-of-music.midi :as midi]))
 
 (defn modes
   []
@@ -12,7 +13,7 @@
   ["A", "A#/Bb" , "B" , "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab"])
 
 (defn rotate [v n]
-  (take (count v) (nthrest (cycle v) (- n 1))))
+  (into [] (take (count v) (nthrest (cycle v) n))))
 
 (def distances
   {:h 1 :w 2 :wh 3})
@@ -63,7 +64,7 @@
         mode-position (- (:position (get-mode mode-name family)) 1)
         rotated-notes (rotate notes (.indexOf notes root-note))
         indexes       (tones->indexes (rotate tones mode-position))]
-    (map #(get rotated-notes (mod % 12)) indexes)))
+    (mapv #(get rotated-notes (mod % 12)) indexes)))
 
 (defn get-scale
   ([root-note mode-name]
@@ -73,7 +74,8 @@
          scale (calc-scale root-note family mode-name)]
      (println (str family-name " Family"))
      (println (str root-note " " mode-name " Scale"))
-     (println scale))))
+     (println scale)
+     scale)))
 
 (defn -main
   "I don't do a whole lot ... yet."
@@ -84,4 +86,6 @@
   (list-families) 4
   (list-modes "Major")
   (get-scale "D" "Major" "Dorian")
-  (list-all-modes))
+  (list-all-modes)
+  (get-scale "C" "Lydian Aug Sharp 2")
+  (midi/play-scale (get-scale "C" "Lydian Aug Sharp 2")))

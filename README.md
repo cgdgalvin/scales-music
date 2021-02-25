@@ -16,4 +16,4 @@
 
   (get-scale "D" "Major" "Dorian")
 
-  
+  (midi/play-scale (get-scale "C" "Lydian Aug Sharp 2"))
