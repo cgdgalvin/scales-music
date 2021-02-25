@@ -68,9 +68,9 @@
   ([root-note family-name mode-name]
    (let [family (name->family family-name)
          scale (calc-scale root-note family mode-name)]
-     (println (str family-name " Family"))
-     (println (str root-note " " mode-name " Scale"))
-     (println scale)
+    ;;  (println (str family-name " Family"))
+    ;;  (println (str root-note " " mode-name " Scale"))
+    ;;  (println scale)
      scale)))
 
 (defn -main
